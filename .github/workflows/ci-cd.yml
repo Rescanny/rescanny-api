@@ -86,6 +86,8 @@ jobs:
             echo "${{ github.ref_name }}" > VERSION
             docker pull ghcr.io/${{ github.actor }}/rescanny-api:latest
             docker compose down
+            docker volume rm -f rescanny_api_public || true
+            docker volume create rescanny_api_public
             docker compose up -d
             sleep 15
             docker exec rescanny-api chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache

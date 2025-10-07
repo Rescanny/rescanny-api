@@ -6,6 +6,7 @@ services:
     volumes:
       - ./.env:/var/www/.env
       - ./VERSION:/var/www/VERSION
+      - rescanny_api_public:/var/www/public
     depends_on:
       - redis
       - mysql
@@ -51,6 +52,8 @@ services:
 
 volumes:
   mysql_data:
+  rescanny_api_public:
+    external: true
 
 networks:
   internal:
