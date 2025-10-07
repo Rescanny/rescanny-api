@@ -13,8 +13,8 @@ services:
     networks:
       internal:
       caddy:
-        - aliases:
-            - rescanny-api
+        aliases:
+          - rescanny-api
 
   mysql:
     env_file:
@@ -47,8 +47,8 @@ services:
     networks:
       internal:
       caddy:
-        - aliases:
-            - rescanny-api-pma
+        aliases:
+          - rescanny-api-pma
 
 volumes:
   mysql_data:
