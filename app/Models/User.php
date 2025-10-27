@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Translation\HasLocalePreference;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasLocalePreference
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, HasUuids, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +19,8 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
     ];
@@ -29,7 +31,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'password',
+        'magic_link_uuid',
         'remember_token',
     ];
 
@@ -41,8 +43,23 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'magic_link_expires_at' => 'datetime',
+            'last_login' => 'datetime',
         ];
+    }
+
+    public function preferredLocale(): string
+    {
+        return $this->locale;
+    }
+
+    public function magicLink(): string
+    {
+        return config('app.webapp_url').'/login/magic-link?token='.$this->magic_link_uuid;
+    }
+
+    public function registeredRecently(): bool
+    {
+        return $this->created_at->isCurrentDay();
     }
 }
