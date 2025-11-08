@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Auth;
+namespace App\Http\Actions\Auth;
 
 use App\Domains\Auth\MagicLink\UseMagicLinkAuthentication;
 use App\Enums\GeneralResult;
@@ -15,9 +15,10 @@ class MagicLinkAuthenticationAction
         $user = User::query()->where('email', $request->email)->first();
 
         if (empty($user)) {
-            $user = User::query()->create(['email' => $request->email]);
+            $user = User::query()->create(['email' => $request->email])->fresh();
         }
 
+        /** @var User $user */
         $result = UseMagicLinkAuthentication::process($user);
 
         return response()->json(
