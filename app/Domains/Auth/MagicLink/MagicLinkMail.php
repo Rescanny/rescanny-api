@@ -29,7 +29,7 @@ class MagicLinkMail extends Mailable
     {
         return new Envelope(
             from: Sender::noReply(),
-            subject: 'Bejelentkezés Rescanny-be',
+            subject: __('mail.subject.magic-link'),
         );
     }
 
@@ -43,7 +43,6 @@ class MagicLinkMail extends Mailable
             with: [
                 'name' => $this->user->first_name ?? __('mail.guest'),
                 'link' => $this->user->magicLink(),
-                'emailType' => 'Bejelentkezés',
             ]
         );
     }
