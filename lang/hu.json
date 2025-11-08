@@ -22,5 +22,17 @@
 
     "mail.auth.warning": "Ha nem te kérted ezt az e-mailt, egyszerűen hagyd figyelmen kívül - <br>a fiókod biztonságban van, nem történt bejelentkezés.",
 
-    "mail.type": "Automatikus e-mail"
+    "mail.type": "Automatikus e-mail",
+
+    "mail.subject.magic-link": "Bejelentkezés Rescanny-be",
+    "mail.subject.account_deleted": "Fiókod és adataid véglegesen törölve lettek",
+
+    "mail.user.deleted.line_1": "A fiókodat sikeresen töröltük. Minden feltöltött képét, személyes adatot, számlázási és fizetési információt véglegesen eltávolítottunk a rendszerünkből.",
+    "mail.user.deleted.line_2": "Köszönjük, hogy használtad szolgáltatásunkat!",
+
+    "user": "Felhasználó",
+
+    "auth.logout": "Sikeres kijelentkezés!",
+
+    "user.deleted": "Fiók törölve! Kilettél jelentkeztetve!"
 }
