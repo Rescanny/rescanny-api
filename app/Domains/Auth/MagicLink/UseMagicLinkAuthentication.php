@@ -17,7 +17,7 @@ readonly class UseMagicLinkAuthentication
         $user->save();
 
         try {
-            $sentMessage = Mail::to($user->email)->send(new MagicLinkMail($user));
+            $sentMessage = Mail::to($user)->send(new MagicLinkMail($user));
 
             return GeneralResult::fromBool((bool) $sentMessage);
         } catch (Exception $e) {
@@ -38,6 +38,9 @@ readonly class UseMagicLinkAuthentication
         ) {
             return null;
         }
+
+        $userWithToken->magic_link_uuid = null;
+        $userWithToken->magic_link_expires_at = null;
 
         return $userWithToken;
     }
