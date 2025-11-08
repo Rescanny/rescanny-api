@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Auth;
+namespace App\Http\Actions\Auth;
 
 use App\Domains\Auth\MagicLink\UseMagicLinkAuthentication;
 use App\Http\Requests\MagicLinkValidationRequest;
@@ -29,7 +29,7 @@ class MagicLinkValidation
 
         return response()->json([
             'message' => $message,
-            'user' => $user,
+            'user' => $user->toResource(),
         ]);
     }
 }

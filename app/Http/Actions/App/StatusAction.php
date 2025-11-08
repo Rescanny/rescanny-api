@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\App;
+namespace App\Http\Actions\App;
 
 use App\Domains\AppStatus\AppStatus;
 use Illuminate\Http\JsonResponse;

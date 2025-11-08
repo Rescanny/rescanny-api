@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\User;
+namespace App\Http\Actions\User;
 
 use App\Models\User;
 use Auth;
@@ -11,11 +11,9 @@ class MeAction
 {
     public function __invoke(): Response|JsonResource
     {
-        if ($user = Auth::user()) {
-            /** @var User $user */
-            return $user->toResource();
-        }
+        /** @var User $user */
+        $user = Auth::user();
 
-        return response()->json(null, 400);
+        return $user->toResource();
     }
 }
