@@ -7,7 +7,7 @@ use App\Http\Requests\MagicLinkValidationRequest;
 use Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class MagicLinkValidation
+class MagicLinkValidationAction
 {
     public function __invoke(MagicLinkValidationRequest $request): Response
     {

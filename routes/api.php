@@ -3,7 +3,7 @@
 use App\Http\Actions\App\StatusAction;
 use App\Http\Actions\Auth\LogoutAction;
 use App\Http\Actions\Auth\MagicLinkAuthenticationAction;
-use App\Http\Actions\Auth\MagicLinkValidation;
+use App\Http\Actions\Auth\MagicLinkValidationAction;
 use App\Http\Actions\User\DeleteAction;
 use App\Http\Actions\User\MeAction;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +15,7 @@ Route::middleware(['web'])->group(function () {
         ->middleware(['throttle:6,1'])
         ->group(function () {
             Route::post('/magic-link', MagicLinkAuthenticationAction::class)->middleware('api.quest');
-            Route::post('/magic-link/validate', MagicLinkValidation::class);
+            Route::post('/magic-link/validate', MagicLinkValidationAction::class);
 
             Route::post('/logout', LogoutAction::class)->middleware('auth');
         });
