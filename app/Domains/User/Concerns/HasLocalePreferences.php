@@ -2,6 +2,7 @@
 
 namespace App\Domains\User\Concerns;
 
+use App\Domains\User\LocalizedDate\UserCarbonFactory;
 use Carbon\Factory;
 
 trait HasLocalePreferences
@@ -18,9 +19,6 @@ trait HasLocalePreferences
 
     public function carbonFactory(): Factory
     {
-        return new Factory([
-            'locale' => $this->preferredLocale(),
-            'timezone' => $this->preferredTimezone(),
-        ]);
+        return UserCarbonFactory::forUser($this);
     }
 }
