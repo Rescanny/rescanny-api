@@ -1,6 +1,7 @@
 <?php
 
 use App\Middlewares\EnsureApiKeyIsValid;
+use App\Middlewares\SetUserLocale;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -17,7 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
                 'api.quest' => \App\Middlewares\RejectIfAuthenticated::class,
             ])
             ->statefulApi()
-            ->appendToGroup('api', EnsureApiKeyIsValid::class);
+            ->appendToGroup('api', EnsureApiKeyIsValid::class)
+            ->appendToGroup('api', SetUserLocale::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
