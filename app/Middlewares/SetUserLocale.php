@@ -18,6 +18,7 @@ class SetUserLocale
         $acceptLanguage = $request->getPreferredLanguage();
         $localesRepository = resolve(SupportedLocalesRepository::class);
 
+        /** @var string $headerLocale */
         $headerLocale = $localesRepository->isValidLocale($acceptLanguage) ? $acceptLanguage : 'en';
 
         app()->setLocale($user ? $user->preferredLocale() : $headerLocale);

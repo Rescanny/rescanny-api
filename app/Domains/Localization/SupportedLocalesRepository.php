@@ -19,7 +19,7 @@ readonly class SupportedLocalesRepository
 
     public function isValidLocale(?string $locale): bool
     {
-        if(empty($locale)) {
+        if (empty($locale)) {
             return false;
         }
 
