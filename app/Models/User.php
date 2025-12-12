@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable implements HasLocalePreference
 {
@@ -17,7 +18,8 @@ class User extends Authenticatable implements HasLocalePreference
         HasFactory,
         HasLocalePreferences,
         HasUuids,
-        Notifiable;
+        Notifiable,
+        Billable;
 
     /**
      * The attributes that are mass assignable.
