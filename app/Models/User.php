@@ -14,12 +14,13 @@ use Laravel\Cashier\Billable;
 class User extends Authenticatable implements HasLocalePreference
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasDisplayName,
-        HasFactory,
-        HasLocalePreferences,
-        HasUuids,
-        Notifiable,
-        Billable;
+    use Billable;
+
+    use HasDisplayName;
+    use HasFactory;
+    use HasLocalePreferences;
+    use HasUuids;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
