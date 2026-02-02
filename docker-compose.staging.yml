@@ -1,0 +1,61 @@
+services:
+  app:
+    image: ghcr.io/zsoltgombocz/rescanny-api:staging-latest
+    container_name: rescanny-staging-api
+    working_dir: /var/www
+    volumes:
+      - ./.env:/var/www/.env
+      - ./VERSION:/var/www/VERSION
+      - rescanny_api_public:/var/www/public
+    depends_on:
+      - redis
+      - mysql
+    networks:
+      internal:
+      caddy:
+        aliases:
+          - rescanny-staging-api
+
+  mysql:
+    env_file:
+      - path: .env.docker
+        required: true
+    image: mysql:8.0
+    container_name: rescanny-staging-mysql
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - internal
+
+  redis:
+    image: redis:8-alpine
+    container_name: rescanny-staging-redis
+    restart: unless-stopped
+    command: ['redis-server', "--maxmemory", "3000mb"]
+    networks:
+      - internal
+
+  pma:
+    env_file:
+      - path: .env.pma
+        required: true
+    image: phpmyadmin:latest
+    container_name: rescanny-staging-pma
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    networks:
+      internal:
+      caddy:
+        aliases:
+          - rescanny-staging-api-pma
+
+volumes:
+  mysql_data:
+  rescanny_api_public:
+    external: true
+
+networks:
+  internal:
+  caddy:
+    external: true
