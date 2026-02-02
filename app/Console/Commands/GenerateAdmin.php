@@ -41,7 +41,10 @@ class GenerateAdmin extends Command
             'password' => bcrypt($password),
         ]);
 
-        Mail::to(Arr::first(config('filament.trusted_emails')))
+        /** @var string[] $emails */
+        $emails = config('filament.trusted_emails');
+
+        Mail::to(Arr::first($emails))
             ->send(new AdminCreatedMail($email, $password));
 
         $this->info("Admin {$name} created successfully.");
