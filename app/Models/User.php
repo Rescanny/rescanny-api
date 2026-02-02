@@ -2,15 +2,26 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Domains\User\Concerns\HasDisplayName;
+use App\Domains\User\Concerns\HasLocalePreferences;
+use Illuminate\Contracts\Translation\HasLocalePreference;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasLocalePreference
 {
+    use Billable;
+
+    use HasDisplayName;
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use HasLocalePreferences;
+    use HasUuids;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +29,11 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'locale',
     ];
 
     /**
@@ -29,20 +42,25 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'password',
+        'magic_link_uuid',
         'remember_token',
     ];
 
+    protected $casts = [
+        'magic_link_expires_at' => 'datetime',
+        'last_login' => 'datetime',
+    ];
+
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * @return HasMany<EmailChange, $this>
      */
-    protected function casts(): array
+    public function emailChanges(): HasMany
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(EmailChange::class);
+    }
+
+    public function magicLink(): string
+    {
+        return config('app.webapp_url').'/login/magic-link?token='.$this->magic_link_uuid;
     }
 }

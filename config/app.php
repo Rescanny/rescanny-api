@@ -15,6 +15,12 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'supported_locales' => [
+        'hu' => 'Magyar',
+        'en' => 'English',
+        'de' => 'Deutsch',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -53,6 +59,8 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+
+    'webapp_url' => env('WEB_APP_URL', 'http://localhost:5173'),
 
     /*
     |--------------------------------------------------------------------------
