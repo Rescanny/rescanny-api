@@ -13,9 +13,6 @@ on:
     types: [published]
 
 jobs:
-  # --------------------------------------------------
-  # CODE ANALYSIS
-  # --------------------------------------------------
   code_analysis:
     name: Code Analysis
     runs-on: ubuntu-latest
