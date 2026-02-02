@@ -2,47 +2,46 @@
     "register.success": "Sikeresen regisztráltál és belettél léptetve!",
     "login.success": "Sikeres bejelentkezés!",
     "login.failed": "Sikertelen bejelentkezés, rossz név jelszó párosítás!",
-
     "auth.magic_link.success": "Kiküldtük a bejelentkezéshez szükséges linket emailben!",
     "auth.magic_link.failed": "Hiba történt, kérlek próbáld újra!",
-
     "auth.magic_link.expired": "A link lejárt, kérlek kérj egy újat a belépéshez!",
-
     "auth.magic_link.login.success": "Sikeres bejelentkezés!",
     "auth.magic_link.registration.success": "Köszönjük a regisztrációd, belettél jelentkeztetve!",
-
     "mail.guest": "Felhasználó",
     "mail.greet": "Kedves :name!",
     "mail.salutation": "<br>Üdvözlettel,<br>Rescanny csapata",
     "mail.button.problem": "Ha nem jelenik meg a gomb használd az alánni linket:<br><a href=':url' target='_blank' rel='noopener' style='word-break:break-all'>:url</a>",
-
     "mail.auth.magic_link.line_1": "A Rescanny-fiókodba való bejelentkezéshez az alábbi gombra kattinthatsz.",
     "mail.auth.magic_link.line_2": "A link csak rövid ideig érvényes, és egyszer használható.",
     "mail.auth.magic_link.button": "Bejelentkezés a Rescanny-be",
-
     "mail.auth.warning": "Ha nem te kérted ezt az e-mailt, egyszerűen hagyd figyelmen kívül - <br>a fiókod biztonságban van, nem történt bejelentkezés.",
-
     "mail.type": "Automatikus e-mail",
-
     "mail.subject.magic-link": "Bejelentkezés Rescanny-be",
     "mail.subject.account_deleted": "Fiókod és adataid véglegesen törölve lettek",
-
     "mail.user.deleted.subject": "Fiókod törölve",
     "mail.user.deleted.line_1": "A fiókodat sikeresen töröltük. Minden feltöltött képét, személyes adatot, számlázási és fizetési információt véglegesen eltávolítottunk a rendszerünkből.",
     "mail.user.deleted.line_2": "Köszönjük, hogy használtad szolgáltatásunkat!",
     "mail.user.deleted.line_admin": "A fiókod egy adminisztrátor törölte, reklamációd itt tudjuk kezelni ha nem jogosan történt: <a href='mailto:info@rescanny.hu'>info@rescanny.hu</a>",
-
+    "mail.user.email_change.subject": "E-mail cím változás",
+    "mail.user.email_change.line_1": "A fiókodhoz nemrégiben e-mail cím módosítást kezdeményeztek. Erősítsd meg a kód beírásával:",
+    "mail.user.email_change.button": "Megerősítés",
+    "mail.email_change.warning": "Ha mégse szeretnéd megváltoztatni, hagyd figyelmen kívül az e-mailt.",
     "user": "Felhasználó",
-
     "auth.logout": "Sikeres kijelentkezés!",
-
     "user.deleted": "Fiók törölve! Kilettél jelentkeztetve!",
-
     "locale.hu": "Magyar",
     "locale.en": "Angol",
     "locale.de": "Német",
-
     "subscription.label.free": "Ingyenes",
     "subscription.label.premium_monthly": "Prémium (havi)",
-    "subscription.label.premium_annual": "Prémium (éves)"
+    "subscription.label.premium_annual": "Prémium (éves)",
+    "user.personal.update.success": "Adatok frissítve!",
+    "user.personal.update.failed": "Hiba történt, kérlek próbáld újra!",
+    "throttle.message": "Túl sok próbálkozás. Próbáld újra :seconds másodperc múlva.",
+    "user.personal.email-change.not-needed.success": "Nincs szükség e-mail módosításra mert az új megegyezik a jelenlegivel.",
+    "user.personal.email-change.code-sent": "Kód kiküldve!",
+    "mail.user.email_changed.subject": "E-mail cím megváltoztatva",
+    "mail.user.email_changed.line_1": "E-mail címed sikeresen megváltoztattad!",
+    "user.email_changed.success": "Sikeres e-mail cím változtatás!",
+    "user.email_changed.failed": "Hiba történt, kérlek próbáld újra!"
 }
