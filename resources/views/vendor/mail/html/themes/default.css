@@ -33,3 +33,16 @@ a.button {
 a.button:hover {
     background-image: linear-gradient(to right, #6366f1, #818cf8);
 }
+
+blockquote {
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: #fff;
+    padding: 1.25rem 1.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid #9ca3af;
+}
