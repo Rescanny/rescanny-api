@@ -101,8 +101,8 @@ jobs:
             cd /home/projects/rescanny-api-staging
             echo "staging-${{ github.sha }}" > VERSION
             docker pull ghcr.io/${{ github.actor }}/rescanny-api:staging-latest
-            docker compose down || true
-            docker compose up -d
+            docker compose -f docker-compose.staging.yml down || true
+            docker compose -f docker-compose.staging.yml up -d
             sleep 15
             docker exec rescanny-staging-api php artisan migrate --force
 
