@@ -13,9 +13,6 @@ on:
     types: [published]
 
 jobs:
-  # --------------------------------------------------
-  # CODE ANALYSIS
-  # --------------------------------------------------
   code_analysis:
     name: Code Analysis
     runs-on: ubuntu-latest
@@ -40,6 +37,9 @@ jobs:
 
   publish_image:
     name: Build & Publish Docker Image
+    if: |
+      (github.event_name == 'push' && github.ref_name == 'main') ||
+      (github.event_name == 'release')
     needs: code_analysis
     runs-on: ubuntu-latest
 
