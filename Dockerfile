@@ -18,7 +18,7 @@ RUN apk add \
     make
 
 RUN pecl install redis
-RUN docker-php-ext-install pdo pdo_mysql zip intl exif
+RUN docker-php-ext-install pdo pdo_mysql zip intl exif bcmath
 RUN docker-php-ext-enable redis
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
